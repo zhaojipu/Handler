@@ -3,12 +3,13 @@ package a001.and.com.homeworkapp.thread;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by zhaojipu on 2017/1/9.
  */
 
-public class MyTextView extends View {
+public class MyTextView extends TextView {
     public MyTextView(Context context) {
         super(context);
     }
@@ -23,8 +24,8 @@ public class MyTextView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        widthMeasureSpec=MeasureSpec.AT_MOST;
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        super.onMeasure(measureWidth(widthMeasureSpec), measureHeight(heightMeasureSpec));
     }
 
     private int measureWidth(int width){
@@ -41,5 +42,19 @@ public class MyTextView extends View {
             }
         }
      return result;
+    }
+
+    private int measureHeight(int height){
+        int resule=50;
+        int specMode=MeasureSpec.getMode(height);
+        int size=MeasureSpec.getSize(height);
+        if(specMode==MeasureSpec.EXACTLY){
+            resule=size;
+        }else{
+            if(specMode==MeasureSpec.AT_MOST){
+                resule=Math.min(resule,size);
+            }
+        }
+        return resule;
     }
 }
