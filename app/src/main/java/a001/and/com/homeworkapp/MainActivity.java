@@ -22,9 +22,6 @@ import java.util.Stack;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,4 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onClick(View view){
+        startActivity(new Intent(this,ListViewActivity.class));
+    }
 }
